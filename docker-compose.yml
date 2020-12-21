@@ -1,0 +1,29 @@
+version: '3.7'
+  
+services:
+  etl:
+    image: "etl"
+    build: ./
+    environment:
+      TZ: "America/Santiago"
+      PYTHONUNBUFFERED: 1
+      PYTHONDONTWRITEBYTECODE: 1
+    volumes:
+      - ./:/root/
+    command: "python  /root/core/etl.py"
+                 
+  backend:
+    image: "games_api"
+    build: ./
+    environment:
+      TZ: "America/Santiago"
+      PYTHONUNBUFFERED: 1
+      PYTHONDONTWRITEBYTECODE: 1
+    depends_on: 
+      - etl
+    volumes:
+      - ./:/root/ 
+    command: "uvicorn main:app --reload --workers 1 --host 0.0.0.0 --port 5000"
+               
+    ports:
+      - 8080:5000  
