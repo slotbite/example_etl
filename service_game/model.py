@@ -9,5 +9,5 @@ class Classification(BaseModel):
     metascore:int  = Field(... , description="Score of game")
   
 class ApiResponse(BaseModel ):
-    status: int = Field(..., alias='status', description='Status code for response')
+    status: int = Field(..., alias='status', description='Status code of processing data ')
     data:  List[Classification]

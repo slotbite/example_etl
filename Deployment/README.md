@@ -29,3 +29,10 @@ Esta carpeta sera persistente en la raíz del proyecto.
  Dentro de la carpeta service_game se define el router y modelo de datos especifico para "games_service".
  En main.py se configura el app principal
  Dentro de core se agregan scripts con las rutas principales y parametrization  , funciones de ayuda y el etl principal.
+
+ El formato de cada servicio corresponde con el modelo ApiResponse, en donde status refleja el estado de los datos entregados y data la respuesta el servicio que debe cumplir con el formato del modelo Classification:
+
+    {
+        status:int,
+        data:{}
+    }
